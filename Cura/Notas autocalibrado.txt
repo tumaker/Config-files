@@ -1,0 +1,31 @@
+En este documento se van a detallar los cambias a realiazar en los ficheros de configuracion para realizar o no el proceso de autocalibrado.
+
+En caso de querer utilizar el sistema de autocalibrado, deceberas copiar los ficheros de configuración en la carpeta "machine profiles" en el directorio de instalación de Cura
+en windows--> c:\Archivos de programa(x86)\Cura\resources\machine_profiles
+en linux --> /usr/share/cura/resources/machine_profiles
+
+En caso de no quere utilizar el sistema de autocalibrado, tendremos que comentar la linea en la que pone G29 en el start code de Cura, dejandolo de la siguiente manera
+
+; -- START GCODE --
+;Sliced at: {day} {date} {time}
+;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}
+;Print time: {print_time}
+;Filament used: {filament_amount}m {filament_weight}g
+;Filament cost: {filament_cost}
+;M190 S{print_bed_temperature} ;Uncomment to add your own bed temperature line
+;M109 S{print_temperature} ;Uncomment to add your own temperature line
+G21        ;metric values
+G90        ;absolute positioning
+M107       ;start with the fan off
+G28        ;homing all axis
+;G29        ;autolevel secuence
+G0 X0 Y0 F3600 			;go start position
+G1 Z15.0 F{travel_speed} ;move the platform down 15mm
+G92 E0                  ;zero the extruded length
+G1 F200 E15             ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G1 F{travel_speed}
+M400					;finish all moves
+;Put printing message on LCD screen
+M117 Printing...
+
