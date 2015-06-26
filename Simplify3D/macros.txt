@@ -1,0 +1,28 @@
+En este documento se detallan las macros que deberemos escribir para la carga y descarga de filamento así como para el calibrado del sensor inductivo.
+
+Estas macros se escribirán en la configuración de firmware de Simplify3D. En la ventana principal pulsando sobre:
+
+tools-->firmware configuration
+Elegimos la pestaña macros y copiamos como aquí abajo. Esta ventana debera quedarse como la imagen macros.png
+
+Cargar Filamento
+
+G91		;Set relative positions
+G1 F200 E+5	;Slow extruder motion
+G1 F9000 E+450	;Fast extruder motion
+G1 F9000 E+410	;Fast extruder motion
+G1 F60 E+10	;Very slow extruder motion
+M18		;Disable steeper motors
+M84		;Deshabilita motores
+
+Retirar Filamento
+
+G91		;Set relative positions
+G1 F9000 E-400	;Fast retract motion
+G1 F9000 E-400	;Fast retract motion
+G1 F9000 E-100	;Fast retract motion
+M84		;Deshabilita motores
+
+Aurtolevel
+
+G28		;Homing all axis
