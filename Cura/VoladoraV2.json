@@ -1,0 +1,46 @@
+{
+   "id": "voladora2",
+   "version": 1, 
+   "name": "Voladora 2",
+   "manufacturer": "Tumaker",
+   "author": "Unai Urkiaga",
+   "icon": "icon_ultimaker2.png",
+
+   "machine-settings":{
+      "machine_name":"Tumaker Voladora V2",
+      "machine_type":"Voladora V2",
+      "machine_width":"250",
+      "machine_depth":"220",
+      "machine_height":"200",
+      "machine_center_is_zero":"False",
+      "has_heated_bed":"True",
+      "gcode_flavor":"RepRap (Marlin/Sprinter)",
+      "extruder_amount":"1",
+      "steps_per_e":"0",
+      "serial_port":"AUTO",
+      "serial_port_auto":"",
+      "serial_baud":"AUTO",
+      "serial_baud_auto":"",
+      "extruder_head_size_min_x":"48",
+      "extruder_head_size_min_y":"27",
+      "extruder_head_size_max_x":"48",
+      "extruder_head_size_max_y":"85",
+      "extruder_head_size_height":"43",
+      "machine_start_gcode": {
+            "default": "G21;metric values\nG90;absolute positioning\nM107;start with the fan off\nG28;homing all axis\nG29;autolevel secuence\nG0 X0 Y0 F3600;go start position\nG1 Z15.0 F{travel_speed} ;move the platform down 15mm\nG92 E0;zero the extruded length\nG1 F200 E15;extrude 3mm of feed stock\nG92 E0;zero the extruded length again\nG1 F{travel_speed}\nM400;finish all moves\n;Put printing message on LCD screen\nM117 Printing..."
+      },
+      "machine_end_gcode": {
+            "default": "M400;finish all moves\nM104 S0;extruder heater off\nM140 S0;heated bed heater off (if you have it)\nG91;relative positioning\nG1 E-10 F300;Retract 10mm of filament \nG1 Z+20.0 X-107 Y185 F2400  ;move Z up a bit and retract filament even more\nG90 ;absolute positioning\nG0 X0 Y210 F6000;move to end position\nG0 Z195;Down Zaxis\nM84 ;steppers off"      
+      }
+  },   
+  "profile":{
+      "filament_diameter":"2.85",
+      "nozzle_size":"0.6",
+      "layer_height":"0.2",
+      "fill_density":"20",
+      "print_speed":"30",
+      "print_temperature":"0",
+      "travel_speed":"150"
+   }
+}
+
